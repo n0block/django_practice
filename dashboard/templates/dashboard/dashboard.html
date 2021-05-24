@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Crew</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for crew_member in crew_members %}
+            <tr>
+                <th scope="row">{{ crew_member.id }}</th>
+                <td>{{ crew_member.first_name }}</td>
+                <td>{{ crew_member.last_name }}</td>
+                <td>{{ crew_member.crew_name }}</td>
+            </tr>
+            {% endfor %}
+<!--            <tr>-->
+<!--                <th scope="row">2</th>-->
+<!--                <td>Johnny</td>-->
+<!--                <td>Tightlips</td>-->
+<!--                <td>@mdo</td>-->
+<!--            </tr>-->
+        </tbody>
+    </table>
+{% endblock content %}
