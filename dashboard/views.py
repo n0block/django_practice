@@ -1,22 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django_tables2 import SingleTableView
+from .forms import CrewMemberForm
+from .models import Dashboard
+from .tables import DashboardTable
+
+
 from django.http import HttpResponse
 
 # Create your views here.
 
 
-def dashboard_view(request):
-    context = {'crew_members': [{'id': 1,
-                                 'first_name': 'Fat',
-                                 'last_name': 'Tony',
-                                 'crew_name': 'Bad MF'},
-                                {'id': 2,
-                                 'first_name': 'Johnny',
-                                 'last_name': 'Tightlips',
-                                 'crew_name': 'Bad MF'},
-                                {'id': 3,
-                                 'first_name': 'Christopher',
-                                 'last_name': 'Moltasanti',
-                                 'crew_name': 'Loyle Capo'},
-                                ]}
+def dashboard_add(request):
+    print('MORON')
+    if request.method == 'POST':
+        form = CrewMemberForm(request.POST)
+        form.save()
+        return redirect('dashboard')
 
-    return render(request, 'dashboard/dashboard.html', context=context)
+    else:
+        form = CrewMemberForm()
+        return render(request, 'dashboard/add.html', {'form': form})
+
+
+class DashboardView(SingleTableView):
+    model = Dashboard
+    table_class = DashboardTable
+    template_name = 'dashboard/dashboard.html'
+
+
+
