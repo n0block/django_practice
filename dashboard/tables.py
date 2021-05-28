@@ -10,7 +10,7 @@ class DashboardTable(tables.Table):
         fields = ('id', 'first_name', 'second_name', 'crew')
         attrs = {'class': 'table table-hover'}
         row_attrs = {
-            'onclick': "window.location.href = 'add';",
+            # 'onclick': "window.location.href = {{ url 'update' record.pk }}",
+            'onclick': 'myFunction(this)',
             'style': 'cursor: pointer',
-            'data-href': 'url://google.com'
         }

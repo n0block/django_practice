@@ -7,3 +7,9 @@ class CrewMemberForm(ModelForm):
         model = Dashboard
         fields = ['first_name', 'second_name', 'crew']
 
+
+class UpdateCrewMemberForm(ModelForm):
+    class Meta:
+        model = Dashboard
+        fields = ['first_name', 'second_name', 'crew']
+

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django_tables2 import SingleTableView
-from .forms import CrewMemberForm
+from django.views.generic import UpdateView
+
+from .forms import CrewMemberForm, UpdateCrewMemberForm
 from .models import Dashboard
 from .tables import DashboardTable
 
@@ -11,7 +13,6 @@ from django.http import HttpResponse
 
 
 def dashboard_add(request):
-    print('MORON')
     if request.method == 'POST':
         form = CrewMemberForm(request.POST)
         form.save()
@@ -20,6 +21,24 @@ def dashboard_add(request):
     else:
         form = CrewMemberForm()
         return render(request, 'dashboard/add.html', {'form': form})
+
+
+class UpdateCrewMemberView(UpdateView):
+    model = Dashboard
+    fields = ['first_name', 'second_name', 'crew']
+    template_name = 'dashboard/update.html'
+
+
+
+# def dashboard_update(request):
+#     if request.method == 'POST':
+#         form = UpdateCrewMemberForm(request.POST)
+#         form.save()
+#         return redirect('dashboard')
+#
+#     else:
+#         form = UpdateCrewMemberForm()
+#         return render(request, 'dashboard/update.html', {'form': form})
 
 
 class DashboardView(SingleTableView):

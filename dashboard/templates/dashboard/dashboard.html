@@ -6,4 +6,9 @@
         +
     </a>
     {% render_table table %}
+    <script>
+        function myFunction(x) {
+            window.location.href = 'update/' + String(x.cells[0].innerHTML);
+        }
+    </script>
 {% endblock content %}
