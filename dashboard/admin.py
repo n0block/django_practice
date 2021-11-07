@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Dashboard
-# Register your models here.
+from dashboard.models.lab_entry_model import LabEntry
+from dashboard.models.vehicle_model import VehicleModel
+from dashboard.models.customer_model import CustomerModel
 
-admin.site.register(Dashboard)
+admin.site.register(LabEntry)
+admin.site.register(VehicleModel)
+admin.site.register(CustomerModel)

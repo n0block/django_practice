@@ -3,8 +3,11 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <h1>Add a new crew member</h1>
-        {{ form|crispy }}
+        <h1 align="center">Create Lab Entry</h1>
+        <h2>Customer</h2>
+        {{ customer|crispy }}
+        <h2>Vehicle</h2>
+        {{ vehicle|crispy }}
         <div class="form-group">
             <button class="btn btn-success mb-1" type="submit">Submit</button>
         </div>

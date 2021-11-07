@@ -1,15 +1,25 @@
 from django.forms import ModelForm
-from .models import Dashboard
+from dashboard.models.lab_entry_model import LabEntry
+from dashboard.models.vehicle_model import VehicleModel, VEHICLE_MODEL_FIELDS
 
 
-class CrewMemberForm(ModelForm):
+class UpdateVehicleForm(ModelForm):
     class Meta:
-        model = Dashboard
-        fields = ['first_name', 'second_name', 'crew']
+        model = VehicleModel
+        fields = list(VEHICLE_MODEL_FIELDS)
 
 
-class UpdateCrewMemberForm(ModelForm):
-    class Meta:
-        model = Dashboard
-        fields = ['first_name', 'second_name', 'crew']
+# class UpdateLabEntryForm(ModelForm):
+#     class Meta:
+#         model = LabEntry
+#         exclude = ('vehicle',)
 
+
+
+
+
+# class UpdateMulti(MultiModelForm):
+#     form_classes = {
+#         'vehicle': UpdateVehicleForm,
+#         'lab_entry': UpdateLabEntryForm
+#     }

@@ -2,13 +2,13 @@
 {% load render_table from django_tables2 %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <a class="btn btn-success mb-1" href="{% url 'dashboard-add' %}">
+    <a class="btn btn-success mb-1" href="{% url 'lab-entry-create' %}">
         +
     </a>
     {% render_table table %}
     <script>
         function myFunction(x) {
-            window.location.href = 'update/' + String(x.cells[0].innerHTML);
+            window.location.href = 'lab-entry/' + String(x.cells[0].innerHTML) + '/update/';
         }
     </script>
 {% endblock content %}
